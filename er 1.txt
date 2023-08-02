@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+def decrypt(input_strings):
+    has_double_space = "  " in input_strings
+    numbers = input_strings.split()
+    result = ""
+
+    for i, number in enumerate(numbers):
+        if number.isdigit() and 1 <= int(number) <= 26:
+            character = chr(int(number) + ord('A') - 1)
+            result += character
+        else:
+            result += number
+            
+        if has_double_space and i < len(numbers) - 1:
+            result += " "
+            
+    return result
+
+input_num = input("[+]Enter encryption: ")
+decrypted_string = decrypt(input_num)
+print(f"[*]Decoding Input: '{input_num}' \n[-]Decrypted to: {decrypted_string}")
